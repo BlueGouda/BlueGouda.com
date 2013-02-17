@@ -1,29 +1,73 @@
 $(function() {
     // Hide address bar on IOs
-    hideBar();
+    // hideBar();
 
     // Apply background images from data attributes
-    backgoundInit();
+    // backgoundInit();
 
     // Affix
-    affixInit();
+    // affixInit();
 
     // Portfolio hovers
-    portfolioHovers();
+    // portfolioHovers();
 
     // Portfolio filters
-    portfolioFilters();
+    // portfolioFilters();
 
 
     // Icon hovers
-    iconHovers();
+    // iconHovers();
 
     // setup contact form
     // setupContactForm();
 
     // creeate twitter feeds
-    createTwitter();
+    // createTwitter();
 
+    initMap();
+
+});
+
+$(window).load(function() {
+    // Initallize flexslider
+    // flexInit();
+
+    // selector for ie rounded images fallback
+    if (window.PIE) {
+        $('.img-circle , .flex-control-nav a , .well-package-heading , span.tag').each(function() {
+            PIE.attach(this);
+        });
+
+        $('.img-circle').on('mouseenter',function(){
+            $(this).prev().addClass('opaque');
+        });
+        $('.img-circle').on('mouseleave',function(){
+           if (!$(this).closest('li').hasClass('inactive'))
+                $(this).prev().removeClass('opaque');
+        });
+        //extra case for squeared portfolio.
+        $('.post-media img , .no-rounded a').on('mouseenter',function(){
+            $(this).addClass('opaque');
+        });
+        $('.post-media img').on('mouseleave',function(){
+            $(this).removeClass('opaque');
+        });
+        // extra case for squared portfolio.
+        $('.no-rounded a').on('mouseleave',function(){
+            if (!$(this).closest('li').hasClass('inactive'))
+                $(this).removeClass('opaque');
+        });
+
+        // timeline ie8 selectors fix
+        $('#timeline .timeline-item:nth-child(even)').addClass('pull-right');
+        $('#timeline .timeline-item:nth-child(even) .post').css({'margin-left': '80px' ,'margin-right': '0'});
+        $('#timeline .timeline-item:nth-child(even) .post-info').css({'left': 'auto' ,'right': '100%'});
+        $('#timeline .timeline-item:nth-child(even) .post-arrow').css({'left': 'auto' ,'right': '100%','background-image':'url("images/timeline-arrow-left.png")'});
+        $('.thumbnails > .span2:nth-child(2n+1), .thumbnails > .span3:nth-child(4n+1), .thumbnails > .span4:nth-child(3n+1)').css({'margin-left':'0','clear':'both'});
+    }
+});
+
+function initMap() {
     var styles = [
       {
           stylers: [
@@ -75,46 +119,7 @@ $(function() {
     //Associate the styled map with the MapTypeId and set it to display.
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
-});
-
-$(window).load(function() {
-    // Initallize flexslider
-    flexInit();
-
-    // selector for ie rounded images fallback
-    if (window.PIE) {
-        $('.img-circle , .flex-control-nav a , .well-package-heading , span.tag').each(function() {
-            PIE.attach(this);
-        });
-
-        $('.img-circle').on('mouseenter',function(){
-            $(this).prev().addClass('opaque');
-        });
-        $('.img-circle').on('mouseleave',function(){
-           if (!$(this).closest('li').hasClass('inactive'))
-                $(this).prev().removeClass('opaque');
-        });
-        //extra case for squeared portfolio.
-        $('.post-media img , .no-rounded a').on('mouseenter',function(){
-            $(this).addClass('opaque');
-        });
-        $('.post-media img').on('mouseleave',function(){
-            $(this).removeClass('opaque');
-        });
-        // extra case for squared portfolio.
-        $('.no-rounded a').on('mouseleave',function(){
-            if (!$(this).closest('li').hasClass('inactive'))
-                $(this).removeClass('opaque');
-        });
-
-        // timeline ie8 selectors fix
-        $('#timeline .timeline-item:nth-child(even)').addClass('pull-right');
-        $('#timeline .timeline-item:nth-child(even) .post').css({'margin-left': '80px' ,'margin-right': '0'});
-        $('#timeline .timeline-item:nth-child(even) .post-info').css({'left': 'auto' ,'right': '100%'});
-        $('#timeline .timeline-item:nth-child(even) .post-arrow').css({'left': 'auto' ,'right': '100%','background-image':'url("images/timeline-arrow-left.png")'});
-        $('.thumbnails > .span2:nth-child(2n+1), .thumbnails > .span3:nth-child(4n+1), .thumbnails > .span4:nth-child(3n+1)').css({'margin-left':'0','clear':'both'});
-    }
-});
+}
 
 function flexInit() {
     $('.flexslider[id]').each(function() {
