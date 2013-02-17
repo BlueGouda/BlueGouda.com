@@ -1,0 +1,17 @@
+# -----------------------------------------------
+# Jekyll Configuration
+# -----------------------------------------------
+
+markdown: rdiscount
+permalink: pretty
+pygments: true
+exclude: Gemfile, Gemfile.lock, Makefile, Procfile, README.md
+
+# -----------------------------------------------
+# Site-specific Settings
+# -----------------------------------------------
+
+author: Bo Lopker
+author_email: bo@bluegouda.com
+title: "Blue Gouda: Web development with a personal touch"
+url: http://localhost:4000
